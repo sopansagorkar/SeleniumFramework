@@ -15,7 +15,7 @@ public class LoginData {
 
 	public String password;
 
-	public XSSFWorkbook workbook;
+	public static XSSFWorkbook workbook;
 
 	public String getUserName() {
 		return userName;
@@ -33,11 +33,11 @@ public class LoginData {
 		this.password = password;
 	}
 
-	public XSSFSheet sheet;
+	public static XSSFSheet sheet;
 
-	public ArrayList<LoginData> getAPIData(String FilePath) {
+	public static LoginData[][] getLoginData(String FilePath) {
 		ArrayList<LoginData> arrayList = new ArrayList<LoginData>();
-
+		LoginData[][] tabArray = null;
 		File file = new File(FilePath);
 
 		try {
@@ -55,13 +55,17 @@ public class LoginData {
 			arrayList.add(LoginData.buildAPIData(row));
 
 		}
+		tabArray = new LoginData[arrayList.size()][1];
+		for (int i = 0; i < arrayList.size(); i++) {
 
-		return arrayList;
+			LoginData data = (LoginData) arrayList.get(i);
+			tabArray[i][0] = data;
+		}
+		return tabArray;
 	}
 
 	public static LoginData buildAPIData(Row row) {
 		LoginData ad = new LoginData();
-
 		ad.setUserName(row.getCell(0).toString().trim());
 		ad.setPassword(row.getCell(1).toString().trim());
 		return ad;

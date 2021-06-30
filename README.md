@@ -2,6 +2,15 @@
 
 This Framework will include all modern techniques 
 
+
+
+** Browser Supported **
+
+```sh
+Chrome, Firefox, PhantomJS
+
+```
+
 ### Command line execution
 
 ```sh
