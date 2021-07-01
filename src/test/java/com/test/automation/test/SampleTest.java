@@ -14,5 +14,6 @@ public class SampleTest {
 	public void TestURL(LoginData data) {
 		LoginPage login=new LoginPage();
 		login.login(data);
+		login.verifyLogin(data);
 	}
 }

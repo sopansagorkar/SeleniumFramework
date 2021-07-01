@@ -4,7 +4,7 @@ This Framework will include all modern techniques
 
 
 
-** Browser Supported **
+**Browser Supported**
 
 ```sh
 Chrome, Firefox, PhantomJS
