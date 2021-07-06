@@ -9,36 +9,40 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+@Getter(value = AccessLevel.PUBLIC)
+@Setter(value = AccessLevel.PUBLIC)
 public class LoginData {
 
-	public String userName;
-
-	public String password;
+	@NonNull
+	private String userName;
+	@NonNull
+	private String password;
 
 	public static XSSFWorkbook workbook;
 
-	public String getUserName() {
-		return userName;
+	public static XSSFSheet sheet;
+
+	private static LoginData ad = new LoginData();
+
+	private LoginData() {
+
 	}
 
-	public void setUserName(String userName) {
+	public LoginData(String userName, String password) {
+		super();
 		this.userName = userName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public static XSSFSheet sheet;
-
-	public static LoginData[][] getLoginData(String FilePath) {
+	public static LoginData[][] getLoginData(String filePath) {
 		ArrayList<LoginData> arrayList = new ArrayList<LoginData>();
 		LoginData[][] tabArray = null;
-		File file = new File(FilePath);
+		File file = new File(filePath);
 
 		try {
 			FileInputStream fis = new FileInputStream(file);
@@ -65,7 +69,6 @@ public class LoginData {
 	}
 
 	public static LoginData buildAPIData(Row row) {
-		LoginData ad = new LoginData();
 		ad.setUserName(row.getCell(0).toString().trim());
 		ad.setPassword(row.getCell(1).toString().trim());
 		return ad;
