@@ -8,13 +8,15 @@ public class HomePage extends Base {
 
 	public void searchHotel(HomeData data) {
 		
-		driver.findElement(By.xpath("//a[contains(text(),'Home')]")).click();
-		driver.findElement(By.xpath("//input[@role='searchbox']")).click();
-		driver.findElement(By.xpath("//div[@id='select2-drop']/div/input")).sendKeys(data.getDestination());
-		driver.findElement(By.id("checkin")).sendKeys(data.getCheckIn());
-		driver.findElement(By.id("checkout")).sendKeys(data.getCheckOut());
-		driver.findElement(By.name("adults")).sendKeys(data.getAdult());
-		driver.findElement(By.name("children")).sendKeys(data.getChild());
+		driver.findElement(By.xpath("//img[@class=\"logo p-1 rounded\"]")).click();
+		driver.findElement(By.xpath("//input[@name='from']")).click();
+        driver.findElement(By.xpath("//input[@name='from']")).sendKeys(data.getSource());
+        driver.findElement(By.xpath("//button[contains(text(),\"IDR\")]")).click();
+        driver.findElement(By.xpath("//input[@name='to']")).click();
+        driver.findElement(By.xpath("//input[@name='to']")).sendKeys(data.getDestination());
+        driver.findElement(By.xpath("//button[contains(text(),\"PNQ \")]")).click();
+        driver.findElement(By.id("departure")).click();
+        driver.findElement(By.xpath("(//div[@class='datepicker dropdown-menu']//td[contains(text(),'10')])[3]")).click();
 
 	}
 

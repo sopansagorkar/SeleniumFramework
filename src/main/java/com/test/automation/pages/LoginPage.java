@@ -18,16 +18,17 @@ public class LoginPage extends Base {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		//driver.findElement(By.cssSelector(".dropdown-login > #dropdownCurrency")).click();
-		driver.findElement(By.linkText("Login")).click();
+		driver.findElement(By.xpath("//span[contains(text(),\"Customer\")]")).click();
+        driver.findElement(By.xpath("(//li/a/small[contains(text(),\"Login\")])[2]")).click();
 		driver.findElement(By.name("email")).sendKeys(data.getUserName());
 		driver.findElement(By.name("password")).sendKeys(data.getPassword());
-		driver.findElement(By.xpath("//span[contains(text(),'Login')]")).click();
+		driver.findElement(By.xpath("//button[@id=\"submitBTN\"]")).click();
 	}
 
 	public void verifyLogin(LoginData data) {
-		driver.findElement(By.xpath("//a[@class=' waves-effect' and contains(text(),'My Profile')]")).click();
+		driver.findElement(By.xpath("//a/span[contains(text(),'My Profile')]")).click();
 		Assert.assertEquals(data.getUserName(),
-				driver.findElement(By.xpath("//input[@name='email']")).getAttribute("value").toString());
+                driver.findElement(By.xpath("//input[@name='email']")).getAttribute("value").toString());
 	}
 
 }

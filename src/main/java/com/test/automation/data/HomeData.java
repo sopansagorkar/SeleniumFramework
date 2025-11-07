@@ -20,6 +20,8 @@ public class HomeData {
 
 	@NonNull
 	private String destination;
+    @NonNull
+    private String source;
 	@NonNull
 	private String checkIn;
 	@NonNull
@@ -36,8 +38,9 @@ public class HomeData {
 	private HomeData() {
 	}
 
-	public HomeData(String destination, String checkIn, String checkOut, String adult, String child) {
+	public HomeData(String source,String destination, String checkIn, String checkOut, String adult, String child) {
 		super();
+        this.source=source;
 		this.destination = destination;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
@@ -75,11 +78,12 @@ public class HomeData {
 	}
 
 	public static HomeData buildAPIData(Row row) {
-		ad.setDestination(row.getCell(0) != null ? row.getCell(0).toString().trim() : "");
-		ad.setCheckIn(row.getCell(1) != null ? row.getCell(1).toString().trim() : "");
-		ad.setCheckOut(row.getCell(2) != null ? row.getCell(2).toString().trim() : "");
-		ad.setAdult(row.getCell(3) != null ? row.getCell(3).toString().trim() : "");
-		ad.setChild(row.getCell(4) != null ? row.getCell(4).toString().trim() : "");
+        ad.setSource(row.getCell(0) != null ? row.getCell(0).toString().trim() : "");
+		ad.setDestination(row.getCell(1) != null ? row.getCell(1).toString().trim() : "");
+		ad.setCheckIn(row.getCell(2) != null ? row.getCell(2).toString().trim() : "");
+		ad.setCheckOut(row.getCell(3) != null ? row.getCell(3).toString().trim() : "");
+		ad.setAdult(row.getCell(4) != null ? row.getCell(4).toString().trim() : "");
+		ad.setChild(row.getCell(5) != null ? row.getCell(5).toString().trim() : "");
 		return ad;
 	}
 

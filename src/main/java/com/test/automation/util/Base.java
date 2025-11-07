@@ -21,26 +21,26 @@ public class Base {
 		DesiredCapabilities capabilities=new DesiredCapabilities();
 		capabilities.setCapability(CapabilityType.BROWSER_NAME,	"firefox");
 
-		if ("Windows 7".equalsIgnoreCase(os) || "Windows 8".equalsIgnoreCase(os) || "Windows 10".equalsIgnoreCase(os)
+		if ("Windows 7".equalsIgnoreCase(os) || "Windows 8".equalsIgnoreCase(os) || "Windows 11".equalsIgnoreCase(os)
 				&& "amd64".equalsIgnoreCase(osarch) && driverName.equalsIgnoreCase(BrowserType.chrome.toString())) {
 			WebDriverManager.chromedriver().setup();
 			driver=new ChromeDriver();
 			return driver;
 		} else if ("Windows 7".equalsIgnoreCase(os) || "Windows 8".equalsIgnoreCase(os)
-				|| "Windows 10".equalsIgnoreCase(os) && "amd64".equalsIgnoreCase(osarch)
+				|| "Windows 11".equalsIgnoreCase(os) && "amd64".equalsIgnoreCase(osarch)
 						&& driverName.equalsIgnoreCase(BrowserType.firefox.toString())) {
 			WebDriverManager.firefoxdriver().setup();
 			driver=new FirefoxDriver();
 			return driver;
 		} else if ("Windows 7".equalsIgnoreCase(os) || "Windows 8".equalsIgnoreCase(os)
-				|| "Windows 10".equalsIgnoreCase(os) && "amd64".equalsIgnoreCase(osarch)
+				|| "Windows 11".equalsIgnoreCase(os) && "amd64".equalsIgnoreCase(osarch)
 						&& driverName.equalsIgnoreCase(BrowserType.phantomjs.toString())) {
-			WebDriverManager.phantomjs().setup();
+			WebDriverManager.firefoxdriver().setup();
 			driver=new PhantomJSDriver();
 			return driver;
 		} else if ("Linux".equalsIgnoreCase(os) && "amd64".equalsIgnoreCase(osarch)
 				&& driverName.equalsIgnoreCase(BrowserType.phantomjs.toString())) {
-			WebDriverManager.phantomjs().setup();
+			WebDriverManager.firefoxdriver().setup();
 			driver=new PhantomJSDriver();
 			return driver;
 		}
