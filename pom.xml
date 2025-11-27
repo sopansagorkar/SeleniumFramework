@@ -77,6 +77,14 @@
 				<configuration>
 					<source>21</source>
 					<target>21</target>
+					<!-- Ensure Lombok is available to the annotation processor at compile time -->
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.30</version>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -12,9 +12,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URI;
+import org.apache.log4j.Logger;
 
 public class Base {
 	public static WebDriver driver;
+	private static final Logger logger = Logger.getLogger(Base.class);
 	public static WebDriver getDriver(String driverName) {
 		String os = System.getProperty("os.name");
 		String osarch = System.getProperty("os.arch");
@@ -46,9 +49,10 @@ public class Base {
 		}
 		else if (driverName.equalsIgnoreCase(BrowserType.remote.toString())) {
 			try {
-				driver=new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),capabilities);
+				URL gridUrl = URI.create("http://localhost:4444/wd/hub").toURL();
+				driver = new RemoteWebDriver(gridUrl, capabilities);
 			} catch (MalformedURLException e) {
-				e.printStackTrace();
+				logger.error("Failed to create Grid URL for RemoteWebDriver", e);
 			}
 			return driver;
 		}
